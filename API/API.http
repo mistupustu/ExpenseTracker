@@ -1,0 +1,63 @@
+@API_HostAddress = https://localhost:8080/api
+// Users
+// Single user
+GET {{API_HostAddress}}/users/{id}
+Accept: application/json
+
+###
+
+// All users
+GET {{API_HostAddress}}/users/
+Accept: application/json
+
+###
+
+// Update user
+PUT {{API_HostAddress}}/users/{id}
+Accept: application/json
+
+###
+
+// Delete user
+DELETE {{API_HostAddress}}/users/{id}
+Accept: application/json
+
+###
+
+// Check if user exists
+GET {{API_HostAddress}}/users/exists/{id}
+Accept: application/json
+
+###
+
+// User roles
+// Single user role
+GET {{API_HostAddress}}/userRoles/{id}
+Accept: application/json
+
+###
+
+// All user roles
+GET {{API_HostAddress}}/userRoles/
+Accept: application/json
+
+###
+
+// Update user role
+PUT {{API_HostAddress}}/userRoles/{id}
+Accept: application/json
+
+###
+
+// Delete user role
+DELETE {{API_HostAddress}}/userRoles/{id}
+Accept: application/json
+
+###
+
+// Check if user role exists
+GET {{API_HostAddress}}/userRoles/exists/{id}
+Accept: application/json
+
+###
+
