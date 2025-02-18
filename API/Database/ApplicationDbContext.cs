@@ -1,12 +1,11 @@
 ﻿using API.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace API
+namespace API.Database
 {
     public class ApplicationDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
-        public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<Expense> Expenses { get; set; }
         public DbSet<ExpenseCategory> ExpenseCategories { get; set; }
 
@@ -22,10 +21,6 @@ namespace API
 
             modelBuilder.Entity<User>().
                 HasIndex(u => u.Email).
-                IsUnique();
-
-            modelBuilder.Entity<UserRole>().
-                HasIndex(ur => ur.Name).
                 IsUnique();
 
             modelBuilder.Entity<ExpenseCategory>().
@@ -45,11 +40,10 @@ namespace API
                 HasForeignKey(e => e.UserId).
                 OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<User>().
-                HasOne(u => u.Role).
-                WithMany(ur => ur.Users).
-                HasForeignKey(u => u.UserRoleId).
-                OnDelete(DeleteBehavior.SetNull);
+            //Enums
+            modelBuilder.Entity<User>()
+            .Property(u => u.Role)
+            .HasConversion<string>();
         }
     }
 }

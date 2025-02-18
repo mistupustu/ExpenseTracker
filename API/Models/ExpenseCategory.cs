@@ -6,7 +6,7 @@ namespace API.Models
     {
         [Key]
         public int Id { get; set; }
-        [MinLength(5)]
+        [MinLength(3)]
         [MaxLength(50)]
         public required string Name { get; set; }
         public ICollection<Expense> Expenses { get; set; } = new List<Expense>();

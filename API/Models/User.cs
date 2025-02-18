@@ -14,8 +14,7 @@ namespace API.Models
         [EmailAddress]
         public required string Email { get; set; }
         public required string Password { get; set; }
-        public required UserRole Role { get; set; }
-        public int UserRoleId { get; set; }
+        public required UserRole Role { get; set; } = UserRole.USER;
         public ICollection<Expense> Expenses { get; set; } = new List<Expense>();
     }
 }

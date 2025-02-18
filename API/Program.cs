@@ -1,3 +1,4 @@
+using API.Database;
 using Microsoft.EntityFrameworkCore;
 
 namespace API

@@ -61,3 +61,62 @@ Accept: application/json
 
 ###
 
+// Expenses
+// Single expense
+GET {{API_HostAddress}}/expense/{id}
+Accept: application/json
+
+###
+
+// All expenses
+GET {{API_HostAddress}}/expense/
+Accept: application/json
+
+###
+
+// Update expense
+PUT {{API_HostAddress}}/expense/{id}
+Accept: application/json
+
+###
+
+// Delete expense
+DELETE {{API_HostAddress}}/expense/{id}
+Accept: application/json
+
+###
+
+// Check if expense exists
+GET {{API_HostAddress}}/expense/exists/{id}
+Accept: application/json
+
+###
+
+// Expense categories
+// Single expense category
+GET {{API_HostAddress}}/expenseCategory/{id}
+Accept: application/json
+
+###
+
+// All expence categories
+GET {{API_HostAddress}}/expenseCategory/
+Accept: application/json
+
+###
+
+// Update expense category
+PUT {{API_HostAddress}}/expenseCategory/{id}
+Accept: application/json
+
+###
+
+// Delete expense category
+DELETE {{API_HostAddress}}/expenseCategory/{id}
+Accept: application/json
+
+###
+
+// Check if expense category exists
+GET {{API_HostAddress}}/expenseCategory/exists/{id}
+Accept: application/json
