@@ -1,5 +1,6 @@
 ﻿using API.Database;
 using API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,6 +8,7 @@ namespace API.Controllers
 {
     [ApiController]
     [Route("api/users")]
+    [Authorize(Roles = "ADMIN")]
     public class UserController : ControllerBase
     {
         private readonly ApplicationDbContext _context;

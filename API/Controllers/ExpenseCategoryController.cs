@@ -1,5 +1,6 @@
 ﻿using API.Database;
 using API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,12 +18,14 @@ namespace API.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "USER,ADMIN")]
         public async Task<ActionResult<IEnumerable<ExpenseCategory>>> GetAll()
         {
             return await _context.ExpenseCategories.ToListAsync();
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "USER,ADMIN")]
         public async Task<ActionResult<ExpenseCategory>> GetExpenseCategory(int id)
         {
             var expenseCategory = await _context.ExpenseCategories.
@@ -35,6 +38,8 @@ namespace API.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "ADMIN")]
+
         public async Task<ActionResult<ExpenseCategory>> AddExpenseCateogry(ExpenseCategory category)
         {
             var validity = isCategoryValid(category);
@@ -49,6 +54,7 @@ namespace API.Controllers
             return CreatedAtAction(nameof(GetExpenseCategory), new { id = category.Id }, category);
         }
         [HttpPut("{id}")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> UpdateExpenseCategory(int id, ExpenseCategory category)
         {
             var validity = isCategoryValid(category);
@@ -75,6 +81,7 @@ namespace API.Controllers
             return NoContent();
         }
         [HttpDelete("{id}")]
+        [Authorize(Roles = "ADMIN")]
         public async Task<IActionResult> DeleteExpenseCategory(int id)
         {
             var category = await _context.ExpenseCategories.FindAsync(id);
@@ -86,6 +93,7 @@ namespace API.Controllers
             return NoContent();
         }
         [HttpGet("exists/{id}")]
+        [Authorize(Roles = "ADMIN")]
         public bool CategoryExists(int id)
         {
             return _context.ExpenseCategories.Any(ec => ec.Id == id);

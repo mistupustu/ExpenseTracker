@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace API.Models
 {
@@ -9,6 +10,7 @@ namespace API.Models
         [MinLength(3)]
         [MaxLength(50)]
         public required string Name { get; set; }
+        [JsonIgnore]
         public ICollection<Expense> Expenses { get; set; } = new List<Expense>();
     }
 }
